@@ -1,0 +1,33 @@
+.jumbotron {
+  background-color: darkgrey;
+}
+
+.coochie {
+  font-family: "CoochieNandoNFW01-Regular";
+  font-size: 5rem;
+}
+
+.edwardian {
+  font-family: "Edwardian Script ITC";
+  font-size: 3rem;
+}
+
+h2 {
+  font-family: "CoochieNandoNFW01-Regular";
+}
+
+h5 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+h6 {
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 2px;
+  background-color: darkgrey;
+}
+
+.card:hover {
+  box-shadow: 4px 8px #000000;
+}
