@@ -1,33 +1,33 @@
 function getTimeRemaining(endtime) {
-  var total = Date.parse(endtime) - Date.parse(new Date());
-  var seconds = Math.floor((total / 1000) % 60);
-  var minutes = Math.floor((total / 1000 / 60) % 60);
-  var hours = Math.floor((total / (1000 * 60 * 60)) % 24);
-  var days = Math.floor(total / (1000 * 60 * 60 * 24));
+  var boston1Total = Date.parse(endtime) - Date.parse(new Date());
+  var boston1Sec = Math.floor((boston1Total / 1000) % 60);
+  var boston1Min = Math.floor((boston1Total / 1000 / 60) % 60);
+  var boston1Hrs = Math.floor((boston1Total / (1000 * 60 * 60)) % 24);
+  var boston1Days = Math.floor(boston1Total / (1000 * 60 * 60 * 24));
   
   return {
-    total,
-    days,
-    hours,
-    minutes,
-    seconds
+    boston1Total,
+    boston1Days,
+    boston1Hrs,
+    boston1Min,
+    boston1Sec
   };
 }
 
 function initializeBoston1(id, endtime) {
   var clock = document.getElementById(id);
-  var daysSpan = clock.querySelector('.days');
-  var hoursSpan = clock.querySelector('.hours');
-  var minutesSpan = clock.querySelector('.minutes');
-  var secondsSpan = clock.querySelector('.seconds');
+  var boston1daysSpan = clock.querySelector('.boston1days');
+  var boston1hoursSpan = clock.querySelector('.boston1hours');
+  var boston1minutesSpan = clock.querySelector('.boston1minutes');
+  var boston1secondsSpan = clock.querySelector('.boston1seconds');
 
   function updateClock() {
     var t = getTimeRemaining(endtime);
 
-    daysSpan.innerHTML = t.days;
-    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+    boston1daysSpan.innerHTML = t.boston1Days;
+    boston1hoursSpan.innerHTML = ('0' + t.boston1Hrs).slice(-2);
+    boston1minutesSpan.innerHTML = ('0' + t.boston1Min).slice(-2);
+    boston1secondsSpan.innerHTML = ('0' + t.boston1Sec).slice(-2);
 
     if (t.total <= 0) {
       clearInterval(timeinterval);
