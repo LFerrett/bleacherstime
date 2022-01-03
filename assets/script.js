@@ -1,9 +1,9 @@
 function getTimeRemaining(endtime) {
-  const total = Date.parse(endtime) - Date.parse(new Date());
-  const seconds = Math.floor((total / 1000) % 60);
-  const minutes = Math.floor((total / 1000 / 60) % 60);
-  const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
-  const days = Math.floor(total / (1000 * 60 * 60 * 24));
+  var total = Date.parse(endtime) - Date.parse(new Date());
+  var seconds = Math.floor((total / 1000) % 60);
+  var minutes = Math.floor((total / 1000 / 60) % 60);
+  var hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+  var days = Math.floor(total / (1000 * 60 * 60 * 24));
   
   return {
     total,
@@ -14,15 +14,15 @@ function getTimeRemaining(endtime) {
   };
 }
 
-function initializeClock(id, endtime) {
-  const clock = document.getElementById(id);
-  const daysSpan = clock.querySelector('.days');
-  const hoursSpan = clock.querySelector('.hours');
-  const minutesSpan = clock.querySelector('.minutes');
-  const secondsSpan = clock.querySelector('.seconds');
+function initializeBoston1(id, endtime) {
+  var clock = document.getElementById(id);
+  var daysSpan = clock.querySelector('.days');
+  var hoursSpan = clock.querySelector('.hours');
+  var minutesSpan = clock.querySelector('.minutes');
+  var secondsSpan = clock.querySelector('.seconds');
 
   function updateClock() {
-    const t = getTimeRemaining(endtime);
+    var t = getTimeRemaining(endtime);
 
     daysSpan.innerHTML = t.days;
     hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
@@ -35,9 +35,17 @@ function initializeClock(id, endtime) {
   }
 
   updateClock();
-  const timeinterval = setInterval(updateClock, 1000);
+  var timeinterval = setInterval(updateClock, 1000);
 }
 
-/* const deadline = new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000);*/
-var deadline = 'March 24 2022 22:59:59 GMT-0500'; 
-initializeClock('clockdiv', deadline);
+var boston1 = 'March 23 2022 23:30:00 GMT-0000'; 
+initializeBoston1('clockdiv', boston1);
+
+/* var boston2 = 'March 24 2022 23:30:00 GMT-0000'; 
+initializeBoston2('clockdiv', boston1);
+
+var spain = 'June 10 2022 15:00:00 GMT-0000'; 
+initializeSpain('clockdiv', spain);
+
+var boston1 = 'June 21 2022 01:00:00 GMT-0000'; 
+initializeRedRocks('clockdiv', redrocks); */

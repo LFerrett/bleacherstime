@@ -44,18 +44,22 @@ h6 {
 #clockdiv > div{
 	padding: 10px;
 	border-radius: 3px;
-	background: #00BF96;
+	background: #910120;
 	display: inline-block;
 }
 
 #clockdiv div > span{
 	padding: 15px;
 	border-radius: 3px;
-	background: #00816A;
+	background: #838383;
 	display: inline-block;
 }
 
 .smalltext{
 	padding-top: 5px;
 	font-size: 16px;
+}
+
+.number {
+  font-weight: 900;
 }
