@@ -1,33 +1,43 @@
-const app = new Vue({
-  el: '#clock',
-  data() {
-    return {
-      now: luxon.DateTime.local().set({ milliseconds: 0 }),
-      end: luxon.DateTime.local().set({ milliseconds: 0 }).plus({ seconds: 10 }),
-      tick: null
+function getTimeRemaining(endtime) {
+  const total = Date.parse(endtime) - Date.parse(new Date());
+  const seconds = Math.floor((total / 1000) % 60);
+  const minutes = Math.floor((total / 1000 / 60) % 60);
+  const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+  const days = Math.floor(total / (1000 * 60 * 60 * 24));
+  
+  return {
+    total,
+    days,
+    hours,
+    minutes,
+    seconds
+  };
+}
+
+function initializeClock(id, endtime) {
+  const clock = document.getElementById(id);
+  const daysSpan = clock.querySelector('.days');
+  const hoursSpan = clock.querySelector('.hours');
+  const minutesSpan = clock.querySelector('.minutes');
+  const secondsSpan = clock.querySelector('.seconds');
+
+  function updateClock() {
+    const t = getTimeRemaining(endtime);
+
+    daysSpan.innerHTML = t.days;
+    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
     }
-  },
-  watch: {
-    now() {
-      if (this.finished) {
-        clearInterval(this.tick)
-      }
-    }
-  },
-  computed: {
-    remaining() {
-      return this.end.diff(this.now).toObject()
-    },
-    display() {
-      return luxon.Duration.fromObject(this.remaining).toFormat('hh:mm:ss')
-    },
-    finished() {
-      return this.now >= this.end
-    }
-  },
-  mounted() {
-    this.tick = setInterval(() => {
-      this.now = luxon.DateTime.local().set({ milliseconds: 0 })
-    }, 1000)
   }
-})
+
+  updateClock();
+  const timeinterval = setInterval(updateClock, 1000);
+}
+
+/* const deadline = new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000);*/
+var deadline = 'March 24 2022 22:59:59 GMT-0500'; 
+initializeClock('clockdiv', deadline);
